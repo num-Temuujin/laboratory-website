@@ -1,0 +1,11 @@
+body {
+    width: 1200px;
+}
+.header {
+    background-color: blue;
+    color: white;
+    padding: 30px;
+    width: 1200px;
+    font-size: 30px;
+    
+}
