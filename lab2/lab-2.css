@@ -1,8 +1,60 @@
     body{
         background-color: black;
     }
-nav a {
+
+.logo {
     font-size: 1.8rem;
     font-weight: 500;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+tr a {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: white;
+    padding: 20px;
+}
+.Text{
+    color: white;
+    padding: 40px;
+    font-weight: 500;
+    margin-left: 150px;
+    margin-top: 100px;
+}
+img {
+    float: right;
+}
+.skill {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   font-size: 100px;
+}
+.skill th {
+    border: 1px solid white  ;
+}
+.skill td {
+     border: 1px solid white  ;
+}
+
+.contact {
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   font-size: 100px;
+}
+.contact th {
+    border: 1px solid white;
+}
+.contact td {
+     border: 1px solid white;
+}
+
+
+
+
+
