@@ -1,16 +1,4 @@
-body {
-    /* width: 2200px; */
-    margin: auto 0;
-}
-.header {
-    background-color: blue;
-    color: white;
-    padding: 100px;
-    font-size: 30px;
-}
-.nav {
-    padding: 20px;
-    float: right;
-    row-gap: 10px;
-    margin: 10px;
+.head {
+    background-color: rgb(59, 89, 152);
+    /* height: 50px; */
 }
