@@ -1,4 +1,21 @@
-.head {
+
+.bagana2 {
+   width: 600px;
+   background-color: rgb(59, 89, 152);
+   color: #538ADC;
+   font-size: 30px;
+}
+.bagana3 {
+    width: 100px;
+}
+.Home {
+    color: #FFFFFF;
+}
+.profile-h1 {
     background-color: rgb(59, 89, 152);
-    /* height: 50px; */
+    color: #FFFFFF;
+    /* width: 200px; */
+}
+.Scraption {
+    /* margin-bottom: 395px; */
 }
