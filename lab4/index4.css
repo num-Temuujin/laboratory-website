@@ -22,6 +22,7 @@ body {
     grid-template-columns: 1fr 2fr;
     box-shadow: 0 35px 55px rgba(0,0,0,0.2 );
 }
+/* LEFT */
 .container .left {
     position: relative;
     background: #167266;
@@ -126,3 +127,112 @@ body {
     height: 100%;
     background-color: rgb(0, 255, 42);
 }
+/* RIGHT */
+.container .right {
+    position: relative;
+    background: #fff;
+    padding: 40px;
+}
+.about {
+    margin-bottom: 50px;
+}
+.about:last-child {
+    margin-bottom: 0px;
+}
+.title2 {
+    color: #167266;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+p {
+    color: #333;
+}
+.about .box {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+}
+.about .box .year_company {
+    min-width: 150px;
+}
+.about .box .year_company h5 {
+    text-transform: uppercase;
+    color: rgb(144, 127, 255);
+    font-weight: 600;
+}
+.about .box .text h4 {
+    text-transform:  uppercase;
+    color: #333;
+    font-size: 16px;
+}
+/* skills */
+.skills .box {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.skills .box h4 {
+    text-transform: uppercase;
+    color: #848c90;
+    font-weight: 500;
+}
+.skills .box .precent {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: #f0f0f0;
+}
+.skills .box .precent div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: rgb(0, 255, 42);
+}
+/* interest */
+.interest ul {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.interest ul li {
+    list-style: none;
+    color: #333;
+    font-weight: 500;
+    margin: 12px 0;
+}
+.interest ul li .icon {
+    color: rgb(0, 255, 42);
+    font-weight: 18px;
+    width: 35px;
+}
+
+@media(max-width : 1000px) {
+    .container{
+        margin: 10px;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .interest ul {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width : 600px) {
+    .about .box {
+        flex-direction: column;
+    }
+    .about .box .year_company {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    .interest ul {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .skills .box {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+
