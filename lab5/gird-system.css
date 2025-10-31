@@ -1,10 +1,8 @@
 .container {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    /* gap: 5px; */
+    grid-template-columns: repeat(12, 2fr);
+    grid-template-rows: repeat(1, 2fr);
 }
-
 .div1 {
     grid-column: span 12 / span 12;
     background-color: #352ba5;
@@ -163,3 +161,4 @@
     padding: 15px;
     padding-left: 50px;
 }
+@media(max-width: 1000px)
