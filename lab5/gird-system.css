@@ -1,3 +1,8 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .container {
     display: grid;
     grid-template-columns: repeat(12, 2fr);
@@ -74,10 +79,11 @@
     justify-content: center;
     /* align-content: center; */
     gap: 10px;
+    /* display: inline-block; */
 }
 
 .div4-1 {
-    display: inline-grid;
+    display: inline-grid;   
     gap: 20px;
     height: 7px;
     padding-top: 30px;
@@ -156,3 +162,4 @@
     padding: 15px;
     padding-left: 50px;
 }
+
