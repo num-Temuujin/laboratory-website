@@ -140,18 +140,13 @@
     justify-content: center;
     width: 100%;
     background-color: #F61067;
-    
 }
-
-
 .footer {
     background-color: #352ba5;
     display: flex;
     justify-content: center;
     align-content: center;
 }
-
-
 
 .div5 {
     grid-column: span 12 / span 12;
@@ -161,4 +156,3 @@
     padding: 15px;
     padding-left: 50px;
 }
-@media(max-width: 1000px)
