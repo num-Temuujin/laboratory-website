@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Цахилгаан машин танилцуулга — хурд, технологи, загварын төгс хослол. Монголд зориулсан ухаалаг авто шийдэл.">
+  <meta name="keywords" content="цахилгаан машин, ухаалаг машин, авто, Монгол, electric car, future car">
+  <meta name="author" content="Тэмүүжин">
+  <title>Цахилгаан Машин | Ирээдүйн Технологи</title>
+  <link rel="canonical" href="https://example.com/">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Arial,Helvetica,sans-serif;line-height:1.6;color:#222;background:#fff}
+    header{background:#111;color:#fff;padding:15px 10%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem}
+    nav{display:flex;flex-wrap:wrap;gap:20px}
+    nav a{color:#fff;text-decoration:none;font-weight:bold;transition:.3s}
+    nav a:hover{color:#00bcd4}
+    .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 10%;min-height:70vh;background:#000;color:#fff;background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('car.webp');background-size:cover;background-position:center}
+    .hero h2{font-size:2rem;margin-bottom:10px}
+    .hero p{max-width:600px;font-size:1.1rem}
+    .features{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:60px 10%;background:#f9f9f9}
+    .feature{flex:1 1 300px;background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-align:center;transition:transform .3s}
+    .feature:hover{transform:translateY(-5px)}
+    .feature img{width:100%;height:200px;object-fit:cover;border-radius:10px}
+    .feature h3{margin:15px 0 10px}
+    footer{background:#111;color:#fff;text-align:center;padding:20px;font-size:.9rem}
+    @media(max-width:768px){
+      header{flex-direction:column;text-align:center}
+      .features{flex-direction:column;align-items:center;padding:40px 5%}
+      .hero{padding:40px 5%}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ирээдүйн Машин</h1>
+    <nav>
+      <a href="#home">Нүүр</a>
+      <a href="#features">Онцлог</a>
+      <a href="#contact">Холбоо</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Шинэ Цахилгаан Машин</h2>
+    <p>Монголд зориулсан ухаалаг авто — байгальд ээлтэй, дуу чимээгүй, хурдны шинэ эрин.</p>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature">
+      <img src="interior.webp" alt="Машины дотор орчин" loading="lazy">
+      <h3>Тансаг дотор орчин</h3>
+      <p>Өндөр технологийн дэлгэц, арьсан суудал, ухаалаг хянах системтэй.</p>
+    </div>
+    <div class="feature">
+      <img src="engine.webp" alt="Цахилгаан хөдөлгүүр" loading="lazy">
+      <h3>Цэвэр хөдөлгүүр</h3>
+      <p>Цахилгаанаар 500 км зам туулах чадвартай, 0-100 км/ц хурданд 3.8 секунд.</p>
+    </div>
+    <div class="feature">
+      <img src="design.webp" alt="Машины гадна дизайн" loading="lazy">
+      <h3>Орчин үеийн дизайн</h3>
+      <p>Аэродинамик хэлбэр, LED гэрэлтүүлэг, ирээдүйн уур амьсгал.</p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>📞 Утас: 9999-9999 | ✉️ info@car.mn</p>
+    <p>&copy; 2025 Ирээдүйн Машин ХХК</p>
+  </footer>
+</body>
+</html>
