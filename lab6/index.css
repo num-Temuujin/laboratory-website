@@ -74,7 +74,7 @@
         gap: 30px;
         padding: 60px 10%;
         /* background: #f9f9f9 */
-         background: #f0f0f0;
+        background: #f0f0f0;
     }
 
     .feature {
@@ -109,7 +109,7 @@
         justify-content: center;
         padding: 50px 10%;
         /* background: #fff; */
-         background: #f0f0f0;
+        background: #f0f0f0;
         text-align: center;
     }
 
@@ -127,7 +127,7 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
-    .reviews {
+    /* .reviews {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -157,7 +157,7 @@
         margin-top: 10px;
         font-weight: bold;
         color: #555;
-    }
+    } */
 
 
     footer {
@@ -167,6 +167,25 @@
         padding: 20px;
         font-size: .9rem
     }
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: #444;
+        transition: color .3s;
+    }
+
+    .footer-links a:hover {
+        color: #00bcd4;
+    }
+
 
     @media(max-width:768px) {
         header {
