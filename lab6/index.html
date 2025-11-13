@@ -18,36 +18,16 @@
     <meta property="og:image" content="https://example.com/image.jpg" />
     <meta property="og:url" content="https://example.com/" />
     <meta property="og:type" content="website" />
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Танай компанийн нэр",
-      "url": "https://example.com",
-      "logo": "https://example.com/logo.png",
-      "sameAs": [
-        "https://www.facebook.com/yourpage",
-        "https://www.instagram.com/yourpage"
-      ]
-    }
-    </script>
-
 </head>
 
 <body>
     <header>
         <h1>Ирээдүйн Машин</h1>
         <nav>
-            <!-- <a href="#home">Нүүр</a>
-            <a href="#features">Онцлог</a>
-            <a href="#contact">Холбоо</a> -->
-
             <a href="#home">Нүүр</a>
             <a href="#features">Машинууд</a>
             <a href="#about">Бидний тухай</a>
-            <a href="#contact">Холбоо барих</a>
-
+            <a href="./more/contact.html">Холбоо барих</a>
         </nav>
     </header>
 
@@ -110,9 +90,9 @@
 
                 <h3>Бидний үнэт зүйлс</h3>
                 <ul>
-                    <li>⚡ Инноваци ба технологийн дэвшил</li>
-                    <li>🌍 Байгальд ээлтэй шийдэл</li>
-                    <li>🤝 Итгэлцэл ба чанар</li>
+                    <li><ion-icon name="flash-outline"></ion-icon> Инноваци ба технологийн дэвшил</li>
+                    <li><ion-icon name="globe-outline"></ion-icon> Байгальд ээлтэй шийдэл</li>
+                    <li><ion-icon name="happy-outline"></ion-icon> Итгэлцэл ба чанар</li>
                 </ul>
 
                 <h3>Манай түүх</h3>
@@ -144,7 +124,7 @@
 
     <footer id="contact">
 
-        <p>📞 Утас: 9911-9911 | ✉️ info@car.mn</p>
+        <p> <ion-icon name="call-outline"></ion-icon>Утас: 9911-9911 | ✉️ info@car.mn</p>
         <p>&copy; 2025 Ирээдүйн Машин ХХК</p>
 
         <nav class="footer-links">
@@ -157,5 +137,7 @@
 
     </footer>
 </body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </html>
