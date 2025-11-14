@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise-2</title>
+</head>
+
+<body>
+    <h1>exercise-2</h1>
+    <script>
+        // Гараас зайг авна (км)
+        let D = parseFloat(prompt("Чоно, туулайн хоорондын зайг км-ээр оруулна уу:"));
+
+        // Харьцангуй хурд (чоно − туулай)
+        const relativeSpeed = 25 - 18; // 7 км/ц
+
+        // Гүйцэх хугацаа (цаг)
+        let hours = D / relativeSpeed;
+
+        // Цаг -> минут, секунд болгох
+        let totalMinutes = hours * 60;
+        let minutes = Math.floor(totalMinutes);
+        let seconds = Math.round((totalMinutes - minutes) * 60);
+
+        alert(
+            "Чоно " +
+            minutes + " минут " +
+            seconds + " секундын дараа гүйцэж авна."
+        );
+    </script>
+</body>
+
+</html>

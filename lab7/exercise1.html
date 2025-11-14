@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise-1</title>
+</head>
+
+<body>
+    <h1>exercise-1</h1>
+    <script>
+        // 1. Тоог авч байна
+        const input = prompt("Тоогоо оруулна уу:");
+
+        // 2. Цифрүүдийн нийлбэрийг тооцох
+        let sum = 0;
+        for (let ch of input) {
+            if (ch >= '0' && ch <= '9') {
+                sum += Number(ch);
+            }
+        }
+
+        // 3. Палиндром шалгах функц
+        function isPalindrome(num) {
+            const s = String(num);
+            return s === s.split("").reverse().join("");
+        }
+
+        // 4. Шалгалтын үр дүн
+        if (isPalindrome(sum)) {
+            alert("Нийлбэр = " + sum + " → Палиндром байна ✔️");
+        } else {
+            alert("Нийлбэр = " + sum + " → Палиндром биш ❌");
+        }
+    </script>
+</body>
+
+</html>

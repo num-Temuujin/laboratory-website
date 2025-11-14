@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exercise-3</title>
+</head>
+
+<body>
+  <script>
+    // Тоот авч байна
+    let num = parseInt(prompt("Тоотоо оруулна уу:"));
+
+    const floors = 9;
+    const entrances = 3;
+    const flatsPerFloor = 4;
+    const flatsPerEntrance = floors * flatsPerFloor; // 36
+
+    if (num <= 0) {
+      alert("Тоот 0 эсвэл сөрөг байж болохгүй!");
+    } else if (num > flatsPerEntrance * entrances) {
+      alert("Ийм тоот энэ байшинд байхгүй!");
+    } else {
+      // Орц
+      let entrance = Math.ceil(num / flatsPerEntrance);
+
+      // Орц доторх байрны дугаар (1–36)
+      let numInEntrance = num - (entrance - 1) * flatsPerEntrance;
+
+      // Давхар
+      let floor = Math.ceil(numInEntrance / flatsPerFloor);
+
+      // Хэд дэх хаалга (давхар дотор 1–4)
+      let door = numInEntrance - (floor - 1) * flatsPerFloor;
+
+      alert(
+        "Орц: " + entrance +
+        "\nДавхар: " + floor +
+        "\nХаалга: " + door
+      );
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise-5</title>
+</head>
+
+<body>
+    <script>
+        // Ulaanbaatar цагийн одоогийн цагийг авах
+        function getUBHour() {
+            try {
+                const parts = new Intl.DateTimeFormat('en-US', {
+                    hour: 'numeric',
+                    hour12: false,
+                    timeZone: 'Asia/Ulaanbaatar'
+                }).formatToParts(new Date());
+                for (const p of parts) {
+                    if (p.type === 'hour') return Number(p.value);
+                }
+                return new Date().getHours();
+            } catch (e) {
+                return new Date().getHours();
+            }
+        }
+
+        // Өглөө эсэх
+        function isMorning() {
+            const h = getUBHour();
+            return h >= 5 && h <= 17;
+        }
+
+        // Гараас тоо авах
+        const x = Number(prompt("Тоо оруулна уу:"));
+
+        if (isNaN(x)) {
+            alert("Та зөв тоо оруулна уу!");
+        } else {
+            const hour = getUBHour();
+
+            if (isMorning()) {
+                // Өглөө → квадрат
+                const r = x * x;
+                alert(`Одоо ${hour}:00 — Өглөө.\n${x} тооны квадрат = ${r}`);
+            } else {
+                // Орой → язгуур
+                if (x < 0) {
+                    alert(`Одоо ${hour}:00 — Орой.\nСөрөг тоонд язгуур авч болохгүй.`);
+                } else {
+                    const r = Math.sqrt(x);
+                    alert(`Одоо ${hour}:00 — Орой.\n${x} тооны язгуур = ${r}`);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

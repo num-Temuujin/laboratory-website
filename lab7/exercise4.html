@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exercise-4</title>
+</head>
+
+<body>
+  <script>
+    // 5 тооны массив
+    let arr = [24, 60, 36, 48, 12];
+
+    // Хоёр тооны GCD олох функц (Евклидийн алгоритм)
+    function gcd(a, b) {
+      while (b !== 0) {
+        let t = b;
+        b = a % b;
+        a = t;
+      }
+      return a;
+    }
+
+    // Массивын бүх элементүүдийн GCD олох
+    function gcdArray(array) {
+      let result = array[0];
+      for (let i = 1; i < array.length; i++) {
+        result = gcd(result, array[i]);
+      }
+      return result;
+    }
+
+    let answer = gcdArray(arr);
+    alert("Массивын 5 тооны хамгийн их ерөнхий хуваагч (GCD) = " + answer);
+  </script>
+
+</body>
+
+</html>
