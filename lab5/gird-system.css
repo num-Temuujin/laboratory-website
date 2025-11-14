@@ -88,7 +88,8 @@ body {
     display: inline-grid;
     gap: 20px;
     /* height: 7px; */
-    padding-top: 30px;
+    padding-top: 40px;
+    margin-left: 20px;
 
 }
 
