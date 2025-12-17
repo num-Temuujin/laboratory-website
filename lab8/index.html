@@ -62,13 +62,31 @@
         document.getElementById("startBtn").onclick = function () {
             this.style.display = "none";
             document.getElementById("gameArea").style.display = "block";
-            startGame();
+            startGame(true);
         };
 
-        function startGame() {
-            mistakes = 0;
-            clearCanvas();
-            drawGallows();
+        // function startGame() {
+        //     mistakes = 0;
+        //     clearCanvas();
+        //     drawGallows();
+
+        //     var index = Math.floor(Math.random() * questions.length);
+        //     currentQuestion = questions[index];
+        //     currentAnswer = answers[index];
+
+        //     revealed = Array(currentAnswer.length).fill(false);
+
+        //     document.getElementById("questionText").textContent = currentQuestion;
+        //     drawWord();
+        //     drawKeyboard();
+        // }
+        function startGame(resetMistakes) {
+
+            if (resetMistakes) {
+                mistakes = 0;
+                clearCanvas();
+                drawGallows();
+            }
 
             var index = Math.floor(Math.random() * questions.length);
             currentQuestion = questions[index];
@@ -81,6 +99,7 @@
             drawKeyboard();
         }
 
+
         //ҮГНИЙ НУУЦ ДҮРСЛЭЛ
         function drawWord() {
             let result = "";
@@ -91,7 +110,7 @@
         }
 
         //МОНГОЛ КРИЛЛ ҮСГИЙН KEYBOARD
-   
+
         function drawKeyboard() {
             const letters = "абвгдеёжзийклмнопрстухөцчшүъяьэюф";
             let keyBox = document.getElementById("keyboard");
@@ -117,6 +136,7 @@
 
             if (indexes.length > 0) {
                 revealed[indexes[0]] = true;
+                
                 btn.style.background = "#4caf50";
 
                 drawWord();
@@ -125,7 +145,7 @@
 
                     setTimeout(() => {
                         alert("Зөв таалаа! Дараагийн асуулт эхэллээ");
-                        startGame();  
+                        startGame();
                     }, 500);
                 }
 
