@@ -22,9 +22,7 @@
     </div>
 
     <script>
-        // -----------------------------
         //1. Асуулт / Хариулт (10 ширхэг)
-        // -----------------------------
         var questions = [
             "1. Германы хамгийн алдартай тансаг машины брэнд?",
             "2. Японы хамгийн том автомашин үйлдвэрлэгч?",
@@ -60,16 +58,13 @@
         var canvas = document.getElementById("hangman");
         var ctx = canvas.getContext("2d");
 
-        // -----------------------------
         //START BUTTON
-        // -----------------------------
         document.getElementById("startBtn").onclick = function () {
             this.style.display = "none";
             document.getElementById("gameArea").style.display = "block";
             startGame();
         };
 
-        // -----------------------------
         function startGame() {
             mistakes = 0;
             clearCanvas();
@@ -86,9 +81,7 @@
             drawKeyboard();
         }
 
-        // -----------------------------
         //ҮГНИЙ НУУЦ ДҮРСЛЭЛ
-        // -----------------------------
         function drawWord() {
             let result = "";
             for (let i = 0; i < currentAnswer.length; i++) {
@@ -97,9 +90,8 @@
             document.getElementById("wordArea").textContent = result;
         }
 
-        // -----------------------------
         //МОНГОЛ КРИЛЛ ҮСГИЙН KEYBOARD
-        // -----------------------------
+   
         function drawKeyboard() {
             const letters = "абвгдеёжзийклмнопрстухөцчшүъяьэюф";
             let keyBox = document.getElementById("keyboard");
@@ -113,9 +105,7 @@
             }
         }
 
-        // -----------------------------
         // ҮСЭГ ШАЛГАХ
-        // -----------------------------
         function guessLetter(letter, btn) {
             let indexes = [];
 
@@ -130,10 +120,6 @@
                 btn.style.background = "#4caf50";
 
                 drawWord();
-
-                // if (revealed.every(x => x)) {
-                //     setTimeout(() => alert("Зөв таалаа!"), 200);
-                // }
                 if (revealed.every(x => x)) {
                     disableKeyboard();
 
@@ -150,10 +136,6 @@
                 btn.disabled = true;
                 drawHangman(mistakes);
 
-                // if (mistakes == maxMistakes) {
-                //     revealAll();
-                //     setTimeout(() => alert("Та ялагдлаа!\nЗөв хариулт: " + currentAnswer), 200);
-                // }
                 if (mistakes == maxMistakes) {
                     revealAll();
                     disableKeyboard();
@@ -167,9 +149,7 @@
             }
         }
 
-        // -----------------------------
         //  Дүүжлүүр зургууд
-        // -----------------------------
         function clearCanvas() {
             ctx.clearRect(0, 0, 300, 300);
         }
