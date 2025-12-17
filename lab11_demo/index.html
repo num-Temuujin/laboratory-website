@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - 04 </title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+   <main class="main">
+    <header class="header">
+
+        <div class="Pokedex-logo-container">
+            <div class="Pokedex-logo">
+                <img src="./images/logo/Vector (1).svg" alt="">
+                <img src="./images/logo/Vector (2).svg" alt="">
+                <img src="./images/logo/Vector (3).svg" alt="">
+                <img src="./images/logo/Vector (4).svg" alt="">
+                <img src="./images/logo/Vector (5).svg" alt="">
+                <img src="./images/logo/Vector (6).svg" alt="">
+                <img src="./images/logo/Vector (7).svg" alt="">
+            </div>
+        </div>
+
+        <div class="search-container">  
+        <div class="input-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Pokemon name, number or type">
+            <button class="search-button" id="searchButton" onclick="Search()" style="border: none;"> Search </button>
+        </div>
+        <div>
+
+        <nav class="pokemon-nav">
+            <div>
+                <select name="pokemon-selector" class="pokemon-select" onchange="optionSelected(value)">
+                    <div class="pokemon-select-types" >
+                        <option value="Lowest">Lowest Number First</option>
+                        <option value="highest">Highest Number First</option>
+                        <option value="atoz">Alphabetically (A-Z)</option>
+                        <option value="ztoa">Alphabetically (Z-A)</option>
+                    </div>
+                </select>
+        </div>
+        
+        <button class="filter">
+            <img src="./images/octicon_filter-16.svg" alt="" class="img"> Filter
+        </button>
+        </nav>
+        
+        <main class="pokemon-container" id="pokemonContainer"></main>
+
+        <main id="myModal" class="modal">
+            <div class="modal-content">
+                    <img src="./images/more/heroicons-solid_arrow-up (1).svg" class="closeButton">
+                    <div class="pokemon-modal" id="pokemonModal"></div>
+            </div>
+
+        </main>
+
+        
+
+
+
+        
+        <script src="./index.js"></script>
+
+    
+
+    
+    
+    </header>
+    
+    
+   </main>
+
+</body>
+</html>
