@@ -1,186 +1,218 @@
 <!DOCTYPE html>
 <html lang="mn">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hangman - Машины Бренд Таах</title>
-<link rel="stylesheet" href="./index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman - Машины Бренд Таах</title>
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
 
-<h1>Машины Бренд Таах — Hangman</h1>
+    <h1>Машины Бренд Таах — Hangman</h1>
 
-<button id="startBtn">Тоглоом эхлүүлэх</button>
+    <button id="startBtn">Тоглоом эхлүүлэх</button>
 
-<div id="gameArea">
-    <h2 id="questionText"></h2>
-    <div id="wordArea"></div>
-    <div id="keyboard"></div>
-    <canvas id="hangman" width="300" height="300"></canvas>
-</div>
+    <div id="gameArea">
+        <h2 id="questionText"></h2>
+        <div id="wordArea"></div>
+        <div id="keyboard"></div>
+        <canvas id="hangman" width="300" height="300"></canvas>
+    </div>
 
-<script>
-// -----------------------------
-//1. Асуулт / Хариулт (10 ширхэг)
-// -----------------------------
-var questions = [
-    "1. Германы хамгийн алдартай тансаг машины брэнд?",
-    "2. Японы хамгийн том автомашин үйлдвэрлэгч?",
-    "3. Италийн алдарт супер машин?",
-    "3. АНУ-ын цахилгаан машины тэргүүлэгч компани?",
-    "4. Британи улсын тансаг жийп брэнд?",
-    "5. Өмнөд Солонгосын том автомашин үйлдвэрлэгч?",
-    "6. Шведийн аюулгүй байдлаараа алдартай брэнд?",
-    "7. Францын автомашин үйлдвэрлэгч?",
-    "8. Америкийн “muscle car” машины брэнд?",
-    "9. Бултай лого бүхий Италийн супер машин?",
-];
+    <script>
+        // -----------------------------
+        //1. Асуулт / Хариулт (10 ширхэг)
+        // -----------------------------
+        var questions = [
+            "1. Германы хамгийн алдартай тансаг машины брэнд?",
+            "2. Японы хамгийн том автомашин үйлдвэрлэгч?",
+            "3. Италийн алдарт супер машин?",
+            "3. АНУ-ын цахилгаан машины тэргүүлэгч компани?",
+            "4. Британи улсын тансаг жийп брэнд?",
+            "5. Өмнөд Солонгосын том автомашин үйлдвэрлэгч?",
+            "6. Шведийн аюулгүй байдлаараа алдартай брэнд?",
+            "7. Францын автомашин үйлдвэрлэгч?",
+            "8. Америкийн “muscle car” машины брэнд?",
+            "9. Бултай лого бүхий Италийн супер машин?",
+        ];
 
-var answers = [
-    "мерседес",
-    "тойота",
-    "ферари",
-    "тесла",
-    "лендровер",
-    "хюндэй",
-    "вольво",
-    "рено",
-    "мустанг",
-];
+        var answers = [
+            "мерседес",
+            "тоёота",
+            "ферари",
+            "тесла",
+            "лендровер",
+            "хюндэй",
+            "вольво",
+            "рено",
+            "мустанг",
+        ];
 
-// -----------------------------
-var currentQuestion = "";
-var currentAnswer = "";
-var revealed = [];
-var mistakes = 0;
-var maxMistakes = 6;
+        // -----------------------------
+        var currentQuestion = "";
+        var currentAnswer = "";
+        var revealed = [];
+        var mistakes = 0;
+        var maxMistakes = 6;
 
-var canvas = document.getElementById("hangman");
-var ctx = canvas.getContext("2d");
+        var canvas = document.getElementById("hangman");
+        var ctx = canvas.getContext("2d");
 
-// -----------------------------
-//START BUTTON
-// -----------------------------
-document.getElementById("startBtn").onclick = function () {
-    this.style.display = "none";
-    document.getElementById("gameArea").style.display = "block";
-    startGame();
-};
+        // -----------------------------
+        //START BUTTON
+        // -----------------------------
+        document.getElementById("startBtn").onclick = function () {
+            this.style.display = "none";
+            document.getElementById("gameArea").style.display = "block";
+            startGame();
+        };
 
-// -----------------------------
-function startGame() {
-    mistakes = 0;
-    clearCanvas();
-    drawGallows();
+        // -----------------------------
+        function startGame() {
+            mistakes = 0;
+            clearCanvas();
+            drawGallows();
 
-    var index = Math.floor(Math.random() * questions.length);
-    currentQuestion = questions[index];
-    currentAnswer = answers[index];
+            var index = Math.floor(Math.random() * questions.length);
+            currentQuestion = questions[index];
+            currentAnswer = answers[index];
 
-    revealed = Array(currentAnswer.length).fill(false);
+            revealed = Array(currentAnswer.length).fill(false);
 
-    document.getElementById("questionText").textContent = currentQuestion;
-    drawWord();
-    drawKeyboard();
-}
-
-// -----------------------------
-//ҮГНИЙ НУУЦ ДҮРСЛЭЛ
-// -----------------------------
-function drawWord() {
-    let result = "";
-    for (let i = 0; i < currentAnswer.length; i++) {
-        result += revealed[i] ? currentAnswer[i] + " " : "_ ";
-    }
-    document.getElementById("wordArea").textContent = result;
-}
-
-// -----------------------------
-//МОНГОЛ КРИЛЛ ҮСГИЙН KEYBOARD
-// -----------------------------
-function drawKeyboard() {
-    const letters = "абвгдеёжзийклмнопрстухөцчшүъяьэюф";
-    let keyBox = document.getElementById("keyboard");
-    keyBox.innerHTML = "";
-
-    for (let ch of letters) {
-        let btn = document.createElement("button");
-        btn.textContent = ch;
-        btn.onclick = () => guessLetter(ch, btn);
-        keyBox.appendChild(btn);
-    }
-}
-
-// -----------------------------
-// ҮСЭГ ШАЛГАХ
-// -----------------------------
-function guessLetter(letter, btn) {
-    let indexes = [];
-
-    for (let i = 0; i < currentAnswer.length; i++) {
-        if (currentAnswer[i] === letter && !revealed[i]) {
-            indexes.push(i);
-        }
-    }
-
-    if (indexes.length > 0) {
-        revealed[indexes[0]] = true;
-        btn.style.background = "#4caf50";
-
-        drawWord();
-
-        if (revealed.every(x => x)) {
-            setTimeout(() => alert("Зөв таалаа!"), 200);
+            document.getElementById("questionText").textContent = currentQuestion;
+            drawWord();
+            drawKeyboard();
         }
 
-    } else {
-        mistakes++;
-        btn.style.background = "#e63946";
-        btn.disabled = true;
-        drawHangman(mistakes);
-
-        if (mistakes == maxMistakes) {
-            revealAll();
-            setTimeout(() => alert("Та ялагдлаа!\nЗөв хариулт: " + currentAnswer), 200);
+        // -----------------------------
+        //ҮГНИЙ НУУЦ ДҮРСЛЭЛ
+        // -----------------------------
+        function drawWord() {
+            let result = "";
+            for (let i = 0; i < currentAnswer.length; i++) {
+                result += revealed[i] ? currentAnswer[i] + " " : "_ ";
+            }
+            document.getElementById("wordArea").textContent = result;
         }
-    }
-}
 
-// -----------------------------
-//  Дүүжлүүр зургууд
-// -----------------------------
-function clearCanvas() {
-    ctx.clearRect(0, 0, 300, 300);
-}
+        // -----------------------------
+        //МОНГОЛ КРИЛЛ ҮСГИЙН KEYBOARD
+        // -----------------------------
+        function drawKeyboard() {
+            const letters = "абвгдеёжзийклмнопрстухөцчшүъяьэюф";
+            let keyBox = document.getElementById("keyboard");
+            keyBox.innerHTML = "";
 
-function drawGallows() {
-    ctx.lineWidth = 3;
-    ctx.strokeStyle = "white";
+            for (let ch of letters) {
+                let btn = document.createElement("button");
+                btn.textContent = ch;
+                btn.onclick = () => guessLetter(ch, btn);
+                keyBox.appendChild(btn);
+            }
+        }
 
-    ctx.beginPath();
-    ctx.moveTo(20, 280); ctx.lineTo(280, 280);
-    ctx.moveTo(60, 280); ctx.lineTo(60, 40);
-    ctx.lineTo(200, 40); ctx.lineTo(200, 70);
-    ctx.stroke();
-}
+        // -----------------------------
+        // ҮСЭГ ШАЛГАХ
+        // -----------------------------
+        function guessLetter(letter, btn) {
+            let indexes = [];
 
-function drawHangman(step) {
-    ctx.strokeStyle = "red";
-    if (step === 1) { ctx.beginPath(); ctx.arc(200,100,20,0,2*Math.PI); ctx.stroke(); }
-    if (step === 2) { ctx.beginPath(); ctx.moveTo(200,120); ctx.lineTo(200,180); ctx.stroke(); }
-    if (step === 3) { ctx.beginPath(); ctx.moveTo(200,140); ctx.lineTo(170,160); ctx.stroke(); }
-    if (step === 4) { ctx.beginPath(); ctx.moveTo(200,140); ctx.lineTo(230,160); ctx.stroke(); }
-    if (step === 5) { ctx.beginPath(); ctx.moveTo(200,180); ctx.lineTo(170,220); ctx.stroke(); }
-    if (step === 6) { ctx.beginPath(); ctx.moveTo(200,180); ctx.lineTo(230,220); ctx.stroke(); }
-}
+            for (let i = 0; i < currentAnswer.length; i++) {
+                if (currentAnswer[i] === letter && !revealed[i]) {
+                    indexes.push(i);
+                }
+            }
 
-function revealAll() {
-    revealed = revealed.map(() => true);
-    drawWord();
-}
+            if (indexes.length > 0) {
+                revealed[indexes[0]] = true;
+                btn.style.background = "#4caf50";
 
-</script>
+                drawWord();
+
+                // if (revealed.every(x => x)) {
+                //     setTimeout(() => alert("Зөв таалаа!"), 200);
+                // }
+                if (revealed.every(x => x)) {
+                    disableKeyboard();
+
+                    setTimeout(() => {
+                        alert("Зөв таалаа! Дараагийн асуулт эхэллээ");
+                        startGame();  
+                    }, 500);
+                }
+
+
+            } else {
+                mistakes++;
+                btn.style.background = "#e63946";
+                btn.disabled = true;
+                drawHangman(mistakes);
+
+                // if (mistakes == maxMistakes) {
+                //     revealAll();
+                //     setTimeout(() => alert("Та ялагдлаа!\nЗөв хариулт: " + currentAnswer), 200);
+                // }
+                if (mistakes == maxMistakes) {
+                    revealAll();
+                    disableKeyboard();
+
+                    setTimeout(() => {
+                        alert("Та ялагдлаа!\nЗөв хариулт: " + currentAnswer);
+                        resetGame();
+                    }, 200);
+                }
+
+            }
+        }
+
+        // -----------------------------
+        //  Дүүжлүүр зургууд
+        // -----------------------------
+        function clearCanvas() {
+            ctx.clearRect(0, 0, 300, 300);
+        }
+
+        function drawGallows() {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "white";
+
+            ctx.beginPath();
+            ctx.moveTo(20, 280); ctx.lineTo(280, 280);
+            ctx.moveTo(60, 280); ctx.lineTo(60, 40);
+            ctx.lineTo(200, 40); ctx.lineTo(200, 70);
+            ctx.stroke();
+        }
+
+        function drawHangman(step) {
+            ctx.strokeStyle = "red";
+            if (step === 1) { ctx.beginPath(); ctx.arc(200, 100, 20, 0, 2 * Math.PI); ctx.stroke(); }
+            if (step === 2) { ctx.beginPath(); ctx.moveTo(200, 120); ctx.lineTo(200, 180); ctx.stroke(); }
+            if (step === 3) { ctx.beginPath(); ctx.moveTo(200, 140); ctx.lineTo(170, 160); ctx.stroke(); }
+            if (step === 4) { ctx.beginPath(); ctx.moveTo(200, 140); ctx.lineTo(230, 160); ctx.stroke(); }
+            if (step === 5) { ctx.beginPath(); ctx.moveTo(200, 180); ctx.lineTo(170, 220); ctx.stroke(); }
+            if (step === 6) { ctx.beginPath(); ctx.moveTo(200, 180); ctx.lineTo(230, 220); ctx.stroke(); }
+        }
+
+        function revealAll() {
+            revealed = revealed.map(() => true);
+            drawWord();
+        }
+
+        function disableKeyboard() {
+            const buttons = document.querySelectorAll("#keyboard button");
+            buttons.forEach(btn => btn.disabled = true);
+        }
+        function resetGame() {
+            document.getElementById("startBtn").style.display = "block";
+            document.getElementById("gameArea").style.display = "none";
+        }
+
+
+
+    </script>
 
 </body>
+
 </html>
