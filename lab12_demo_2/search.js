@@ -1,7 +1,23 @@
+const InputElements = document.querySelector ('#search-input');
+const search_icon = document.querySelector ('#search-close-icon');
+const sort_wrapper = document.querySelector ('.sort-wrapper');
+
+InputElements.addEventListener ('input',() => {
+  handleInputChange (InputElements);
+});
+search_icon.addEventListener ('click',() => {
+  handleSearchCloseOnClick(InputElements);
+});
+sort_wrapper.addEventListener ('click',() => {
+  handleSortIconOnClick(InputElements);
+});
+
+
 let currentPokemonId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   const MAX_POKEMONS = 99;
+  
   const pokemonID = new URLSearchParams(window.location.search).get("id");
   const id = parseInt(pokemonID, 10);
 
@@ -210,7 +226,7 @@ function displayPokemonDetails(pokemon) {
 
   const statNameMapping = {
     hp: "HP",
-    attack: "ATK",
+    attack: "ATK",  
     defense: "DEF",
     "special-attack": "SATK",
     "special-defense": "SDEF",
